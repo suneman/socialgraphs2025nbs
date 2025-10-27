@@ -1,0 +1,785 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Week 4 &#8212; Social Graphs 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Week4';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 5" href="Week5.html" />
+    <link rel="prev" title="Week 3" href="Week3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="How_To_Take_This_Class.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Social Graphs 2025 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Social Graphs 2025 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="How_To_Take_This_Class.html">
+                    How the class works!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="PythonBootcamp.html">Introduction to Python &amp; Jupyter Notebooks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Week1.html">Week 1</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week2.html">Week 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Week3.html">Week 3</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 4</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week5.html">Week 5</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week6.html">Week 6</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week7.html">Week 7</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week8.html">Week 8</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/suneman/socialgraphs2025nbs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/suneman/socialgraphs2025nbs/issues/new?title=Issue%20on%20page%20%2FWeek4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Week4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Week 4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-regular-expressions">Prelude: Regular expressions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-download-the-wikipedia-pages-of-characters">Part 1: Download the Wikipedia pages of characters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-to-the-perfectionists-out-there">A note to the perfectionists out there</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-our-regularly-scheduled-programming">Back to our regularly scheduled programming</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-building-the-networks">Part 2: Building the networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-visualizing-the-networks">Part 3: Visualizing the networks</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="week-4">
+<h1>Week 4<a class="headerlink" href="#week-4" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This week is all about working with data. I’m not going to lie to you. This part might be frustrating - but frustration is an integral part of learning. Real data is almost always messy &amp; difficult … and learning to deal with that fact, is a key part of being a data scientist.</p>
+<p>Enough about the process, let’s get to the content.</p>
+<p><img alt="Text" src="https://raw.githubusercontent.com/suneman/socialgraphs2025/main/files/rock.png" /></p>
+<p>Today, we will use network science and Wikipedia to learn about the relationships of <strong><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_mainstream_rock_performers">Rock Bands &amp; Performers</a></strong>.</p>
+<p>To create the network, we will download the Wikipedia pages for all people in the list. Next, we create the network of the pages that link to each other. We can do this because wikipedia pages link to one another. So <a class="reference external" href="https://en.wikipedia.org/wiki/The_Beatles">The Beatles</a> links to <a class="reference external" href="https://en.wikipedia.org/wiki/The_Kinks">the Kinks</a>, for example.</p>
+<p>Next time, we’ll use our network skills (as well as new ones) to understand that network. Further down the line, we’ll use natural language processing to extract information from the text displayed on those pages.</p>
+<p>But for today, the tasks are:</p>
+<ul class="simple">
+<li><p>Learn about regular expressions.</p></li>
+<li><p>Download and store (for later use) all the performer-pages from Wikipedia.</p></li>
+<li><p>Extract all the internal wikipedia-links that connect the performers on Wikipedia.</p></li>
+<li><p>Generate the network of performers on wikipedia.</p></li>
+<li><p>Calculate some simple network statistics.</p></li>
+<li><p>Create a simple plot</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="prelude-regular-expressions">
+<h1>Prelude: Regular expressions<a class="headerlink" href="#prelude-regular-expressions" title="Link to this heading">#</a></h1>
+<p>Before we get started, we have to get a little head start on the <em>Natural Language Processing</em> part of the class. This is a new direction for us. Up to now, we’ve mostly been doing math-y stuff with Python, but today, we’re going to be using Python to work through a text. The central thing we need to be able to do today, is to extract internal wikipedia links (links between wiki-pages). And for that we need regular expressions.</p>
+<div class="alert alert-block alert-info">
+The recipe below is what I told the class to do before LLMs. If you want to try to learn about regular expressions on your own, that's what you need to do. <b>BUT!</b> You don't have to. <b>For this part, it's OK to use an LLM to help you as much as you possibly can.</b> The reason I'm saying this is that I don't think having an intimate knowledge of regular expressions is important for the content of this class.
+</div>
+<div class="alert alert-block alert-info">
+That said, <b>using an LLM means that you have to do extra checking and testing</b>. Make sure that the code you get from your LLM actually does what you asked it to do by going through some examples and manually checking (use a real wiki page or the test-text below). If your LLM hallucinated the wrong answer and you still use the data that comes out, it will count negatively in our evaluations.
+</div>
+<blockquote>
+<div><p><em>Reading/Video</em></p>
+<ul class="simple">
+<li><p>Read <a class="reference external" href="https://developers.google.com/edu/python/regular-expressions"><strong>this tutorial</strong></a> to form an overview of regular expressions. This is important to understand the content of the tutorial (also very useful later), so you may actually want to work through the examples.</p></li>
+<li><p>(<strong>Experiment</strong>: An alternative to reading. If you love videos more than reading, you can also check out <a class="reference external" href="https://www.youtube.com/watch?v=rhzKDrUiJVk">this YouTube explainer video</a> instead of going through the tutorial above – it’s a friendly looking young man called Kyle who goes through RegExps from his bedroom. I haven’t watched the whole thing … since I personally don’t like video explainers … but it has many views + thumbs up.)</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><p><em>Exercises</em>: Regular expressions round 1.</p>
+<ul class="simple">
+<li><p>Now, explain in your own words: what are regular expressions?</p></li>
+<li><p>Provide an example of a regex to match 4 digits numbers (by this, I mean precisely 4 digits, you should not match any part of numbers with e.g. 5 digits). In your notebook, use <code class="docutils literal notranslate"><span class="pre">findall</span></code> to show that your regex works on this <a class="reference external" href="https://raw.githubusercontent.com/SocialComplexityLab/socialgraphs2020/master/files/regex_exercise.txt">test-text</a>. <strong>Hint</strong>: a great place to test out regular expressions is: <a class="reference external" href="https://regex101.com">https://regex101.com</a>.</p></li>
+<li><p>Provide an example of a regex to match words starting with “super”. Show that it works on the <a class="reference external" href="https://raw.githubusercontent.com/SocialComplexityLab/socialgraphs2020/master/files/regex_exercise.txt">test-text</a>.</p></li>
+</ul>
+</div></blockquote>
+<p>Now we can go on to figure out how how to match internal wiki links. Wiki links come in two flavors. They’re always enclosed in double square brackets, e.g. <code class="docutils literal notranslate"><span class="pre">[[wiki-link]]</span></code> and can either occur like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>... some text [[Aristotle]] some more text ...
+</pre></div>
+</div>
+<p>which links to the page <a class="reference external" href="https://en.wikipedia.org/wiki/Aristotle"><code class="docutils literal notranslate"><span class="pre">https://en.wikipedia.org/wiki/Aristotle</span></code></a>.</p>
+<p>The second flavor has two parts, so that links can handle spaces and other more fancy forms of references, here’s an example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>... some text [[John_McCain|John McCain]] some more text ...
+</pre></div>
+</div>
+<p>which links to the page <a class="reference external" href="https://en.wikipedia.org/wiki/John_McCain"><code class="docutils literal notranslate"><span class="pre">https://en.wikipedia.org/wiki/John_McCain</span></code></a>. Now it’s your turn.</p>
+<blockquote>
+<div><p><em>Exercise</em>: Regular expressions round 2. Show that you can extract the wiki-links from the <a class="reference external" href="https://raw.githubusercontent.com/SocialComplexityLab/socialgraphs2022/master/files/regex_exercise.txt">test-text</a>. Perhaps you can find inspiration on stack overflow or similar. <strong>Hint</strong>: Try to solve this exercise on your own (that’s what you will get the most out of - learning wise), but if you get stuck … you will find the solution in one of the video lectures below.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="part-1-download-the-wikipedia-pages-of-characters">
+<h1>Part 1: Download the Wikipedia pages of characters<a class="headerlink" href="#part-1-download-the-wikipedia-pages-of-characters" title="Link to this heading">#</a></h1>
+<p>It’s time to download all of the pages of the characters. Use your experience with APIs from Week 1. To get started, I <strong>strongly</strong> recommend that you re-watch the <strong>APIs video lecture</strong> from that week - it contains lots of useful tips on this specific activity (yes, I had planned this all along!). I’ve included it below for your covenience.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;9l5zOfh0CRo&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/9l5zOfh0CRo"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>Now, it’s time to go and get the names of all the wiki pages you’ll need for your analysis. Those will serve as the nodes in our network.</p>
+<p><em>Exercise</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Go to the page <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_mainstream_rock_performers">https://en.wikipedia.org/wiki/List_of_mainstream_rock_performers</a> and extract all of the artist-links using your regular expressions from above.</p>
+<ul>
+<li><p>Hint: To make this easier, you can simply hit the edit button on wikipedia, copy the entire content of the file to a plain text file on your computer and manually delete all of the markup that’s not related to the artists’ names. (Otherwise there are some wiki-links there that you don’t want)</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+Again, it's OK to use an LLM as much as you can here. But you should double check that it actually does what you want and all that stuff.
+</div>
+<section id="a-note-to-the-perfectionists-out-there">
+<h2>A note to the perfectionists out there<a class="headerlink" href="#a-note-to-the-perfectionists-out-there" title="Link to this heading">#</a></h2>
+<p>The files contain names and corresponding wiki-link, but pages can be missing or redirected. If you encounter re-directs, you can follow the redirect link and see if you can recover a page that’s not already in your database.  (But you do not have to do that either - it’s fine to just skip … many new issues can arise if you try to follow the redirects).</p>
+</section>
+<section id="back-to-our-regularly-scheduled-programming">
+<h2>Back to our regularly scheduled programming<a class="headerlink" href="#back-to-our-regularly-scheduled-programming" title="Link to this heading">#</a></h2>
+<p>With the list from the exercise above, you now have all of the nodes in the network.</p>
+<p><em>Exercise</em></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use your knowledge of APIs and the list of all the wiki-pages to download all the text on the pages of the rock performers.</p>
+<ul>
+<li><p>Hint 0: Make sure you read the <a class="reference external" href="https://www.mediawiki.org/wiki/API:Main_page">Wiki API pages</a> to ensure that your <strong>download the cleanest possible version of the page (the wikitext)</strong>. <a class="reference external" href="https://stackoverflow.com/questions/55779015/get-wikitext-from-wikipedia-api">This link</a> may be helpful.</p></li>
+<li><p>Hint 1: You may want to save the individual band/artist pages on your computer. You can use your skills from the first lectures to write them as plain-text files (that’s what I would do - one file per band/artist, named according to its wiki-link). (But you can also use pickle files or start a database if you like that better.)</p></li>
+<li><p>Hint 2: If you now have a directory with all those files, you can use <a class="reference external" href="https://www.geeksforgeeks.org/python-os-listdir-method/"><code class="docutils literal notranslate"><span class="pre">os.listdir()</span></code></a> to list all the files in that directory within Python and iterate over the files if you need to.</p></li>
+<li><p>Hint 3: Don’t forget to add underscores to the performer names when you construct the urls</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+Again, it's OK to use an LLM here.
+</div></section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="part-2-building-the-networks">
+<h1>Part 2: Building the networks<a class="headerlink" href="#part-2-building-the-networks" title="Link to this heading">#</a></h1>
+<p>Now, we’re going to build a single NetworkX directed graph with all the rock performers. (We are analyzing a network of bands/artists/perfomers. I’ll use all of those interchangably below).</p>
+<p>The nodes in the network will be all the performers, and we will place an edge between nodes <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> if the Wikipedia page of node <span class="math notranslate nohighlight">\(A\)</span> links to the Wikipedia page of node <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>The overall plan of attack for this is the following:</p>
+<ul class="simple">
+<li><p>Take the pages you have downloaded for each performer.</p></li>
+<li><p>Each page corresponds to a performer (= a node in your network).</p></li>
+<li><p>Find all the links in a performers page that link to another node of the network (= some other performer).</p></li>
+<li><p>There are many ways to do this, but below, I’ve tried to break it down into natural steps.</p></li>
+</ul>
+<p><em>Exercise</em>: Build the network of Rock Performers</p>
+<blockquote>
+<div><p>Now we can build the network. Here are the instructions.</p>
+<ul class="simple">
+<li><p>Use a regular expression to extract all outgoing links from each of the pages you downloaded above.</p>
+<ul>
+<li><p>Start by making a single page work. Do some debugging to make sure it’s actually working.</p></li>
+<li><p>Then slowly build the loops over performers/pages to take your little operation to industrial scale</p></li>
+<li><p>You don’t have to be perfect. There will be tricky edge-cases, you don’t have to solve all of those. The key is to get a pretty good network to work with, not to make everything perfect.</p></li>
+</ul>
+</li>
+<li><p>For each link you extract, check if the target is a person from your list of performers. If yes, keep it. If no, discard it.</p></li>
+<li><p>Use a NetworkX <a class="reference external" href="https://networkx.org/documentation/stable/reference/classes/digraph.html"><code class="docutils literal notranslate"><span class="pre">DiGraph</span></code></a> to store the network.</p></li>
+<li><p>Store the <code class="docutils literal notranslate"><span class="pre">length</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">content</span></code> as an attribute of the node (i.e. count the number of <em>words</em> you have in each character’s page). By storing this information as a nodal features, we keep all the relevant data in one place. The safe way to count words without counting symbols is to use <code class="docutils literal notranslate"><span class="pre">regex</span></code>, but simpler methods are OK.</p></li>
+<li><p>When have you finished, you’ll notice that some nodes do not have any out- and in- degrees. Unless you’ve made a mistake, those are truly isolated bands/singers. Double check for mistakes, then <em>discard</em> those disconnected nodes from the network.</p></li>
+<li><p>Finally, extract the largest component - it will make our work with visualisations much easier (note: removing <em>isolated</em> nodes (with no links) does not guarantee that you are left with the largest component).</p>
+<ul>
+<li><p><em>Note 1</em>: For directed graphs use <code class="docutils literal notranslate"><span class="pre">weakly</span> <span class="pre">connected</span> <span class="pre">component</span></code> to extract the largest component. You can also check the hints on how to extract the largest component of a graph from Week 1 notebook.</p></li>
+<li><p><em>Note 2</em>: Further analysis is done with the largest component.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>Take a moment to think about what you have just accomplished! Using simple tools, you’ve managed to build a complex network by crawling data from wikipedia. This means that you are a powerful hacker. Congratulations.</p>
+<div class="alert alert-block alert-info">
+If it's helpful to you, it's OK to use an LLM here.
+</div>
+<p><em>Excercise</em>: Explain your process in words</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Document how you crawled the network.</p>
+<ul>
+<li><p>First, simply describe the steps of the process (what you did, step by step)</p></li>
+<li><p>Then, write a short section about which part of the process that was most difficult</p></li>
+<li><p>Next write a short section about how you used LLMs to help you</p></li>
+<li><p>Finally, compose a short section about what you would do differently if you had to do it again</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+Use your own words here. Writing makes you better at thinking! Train that brain.
+</div>
+<p><em>Exercise</em>: Simple network statistics and analysis</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>What is the number of nodes in the network?</p></li>
+<li><p>More importantly, what is the number of links? (Chat with a fellow student or a TA to make sure you’re in the right ball-park)</p></li>
+<li><p>Plot the in and out-degree distributions for the entire network. What do you observe? Can you explain why the in-degree distribution is different from the out-degree distribution?</p>
+<ul>
+<li><p>Compare the out-degree distribution to a <em>random network</em> with the same number of nodes and links.</p></li>
+<li><p>Compare the in-degree distribution to a <em>scale-free</em> network with the same number of nodes.</p></li>
+</ul>
+</li>
+<li><p>Who are the top 5 most connected performers (Report results for in-degrees and out-degrees, that is, who has highest in-degree, who has highest out-degree)? Comment on your findings. Is this what you would have expected?</p></li>
+<li><p>What are the 10 pages with the longest wiki entries? (use the <code class="docutils literal notranslate"><span class="pre">length</span> <span class="pre">of</span> <span class="pre">content</span></code> attribute to figure this one out)?</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+For this exercise, I hope you'll do everything yourself. This is a part where you learn something by writing the code.
+</div></section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-3-visualizing-the-networks">
+<h1>Part 3: Visualizing the networks<a class="headerlink" href="#part-3-visualizing-the-networks" title="Link to this heading">#</a></h1>
+<p><em>Exercise:</em> Let’s build a simple visualization of the network</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>For the sake of the visualisation, let’s convert our network to <em>undirected graph</em> (tip: There is a NetworkX command to help you).</p></li>
+</ol>
+<ul class="simple">
+<li><p><em>Note</em>: Keep the directed graph, we will use it in the following exercises.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Use the NetworkX command <code class="docutils literal notranslate"><span class="pre">nx.spring_layout</span></code> or <code class="docutils literal notranslate"><span class="pre">nx.draw_kamada_kawai</span></code> to draw the resulting undirected network. (You can find <a class="reference external" href="https://en.wikipedia.org/wiki/Force-directed_graph_drawing">background on the algorithms here</a>.)</p></li>
+</ol>
+<ul class="simple">
+<li><p>Set up your plot so that node-size depends on the node <em>degree</em>.</p></li>
+<li><p>Make the node color depend on the <code class="docutils literal notranslate"><span class="pre">length</span> <span class="pre">of</span> <span class="pre">content</span></code> attribute. I recommend choosing a color scheme that is quite simple (e.g. the Sequential ones here: <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>)</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+For this exercise, I hope you'll do almost everything yourself. But it's OK to use an LLM for help with the coloring.
+</div>
+<p>If you want to make things more fancy, note that Wikipedia writes that local minima is a problem for these graphs: “It is easy to see that force-directed algorithms produce a graph with minimal energy, in particular one whose total energy is only a local minimum. The local minimum found can be, in many cases, considerably worse than a global minimum, which translates into a low-quality drawing. For many algorithms, especially the ones that allow only down-hill moves of the vertices, the final result can be strongly influenced by the initial layout, that in most cases is randomly generated. The problem of poor local minima becomes more important as the number of vertices of the graph increases. <strong>A combined application of different algorithms is helpful to solve this problem</strong>. For example, using the Kamada–Kawai algorithm to quickly generate a reasonable initial layout and then the Fruchterman–Reingold algorithm to improve the placement of neighbouring nodes.” (my emphasis)</p>
+<p>But don’t worry if your network looks like a hairball (a.k.a a <em>ridiculogram</em>) for now, we’ll dig deeper with visualization next time.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Week3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Week5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 5</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 4</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prelude-regular-expressions">Prelude: Regular expressions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-download-the-wikipedia-pages-of-characters">Part 1: Download the Wikipedia pages of characters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-to-the-perfectionists-out-there">A note to the perfectionists out there</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-to-our-regularly-scheduled-programming">Back to our regularly scheduled programming</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-building-the-networks">Part 2: Building the networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-visualizing-the-networks">Part 3: Visualizing the networks</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sune Lehmann
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

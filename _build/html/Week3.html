@@ -1,0 +1,759 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Week 3 &#8212; Social Graphs 2025</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Week3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Week 4" href="Week4.html" />
+    <link rel="prev" title="Week 2" href="Week2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="How_To_Take_This_Class.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Social Graphs 2025 - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Social Graphs 2025 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="How_To_Take_This_Class.html">
+                    How the class works!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="PythonBootcamp.html">Introduction to Python &amp; Jupyter Notebooks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Week1.html">Week 1</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week2.html">Week 2</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 3</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week4.html">Week 4</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week5.html">Week 5</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week6.html">Week 6</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week7.html">Week 7</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Week8.html">Week8</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/suneman/socialgraphs2025nbs" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/suneman/socialgraphs2025nbs/issues/new?title=Issue%20on%20page%20%2FWeek3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Week3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Week 3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-small-world-networks">Part 1: Small world networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-scale-free-networks">Part 2: Scale-free networks</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-the-friendship-paradox-in-scale-free-networks">Part 3: The friendship paradox in scale-free networks</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="week-3">
+<h1>Week 3<a class="headerlink" href="#week-3" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This week we’ll get started on modern network science. We’ll focus on two key results that kick-started a revolution in our understanding of networks.</p>
+<ul class="simple">
+<li><p>Problems with random networks as models for real networks and the Watts-Strogatz model</p></li>
+<li><p>Scale-free networks and the Barabasi-Albert model</p></li>
+</ul>
+<p>Everything is divided up into 3 big chuncks. We’re now up to speed, so there’s a substantial amount of material today … but I also hope that it’s fun and feels worth your time :)</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-1-small-world-networks">
+<h1>Part 1: Small world networks<a class="headerlink" href="#part-1-small-world-networks" title="Link to this heading">#</a></h1>
+<p>Once again, we’ll start with some lecturing. So it’s time to watch a little video to get you started.</p>
+<blockquote>
+<div><p><strong><em>Video Lecture</em></strong>: Some properties of real world networks. Clustering and small paths. The Watts-Strogatz model.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;tMLJ2NYI1FU&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/tMLJ2NYI1FU"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>Next up is fun with reading the textbook. There’s lots of goodies left in Chapter 3 that covers the stuff I’ve just covered in the video from a slightly different angle.</p>
+<blockquote>
+<div><p><em>Reading</em>: For this part, we’ll read the remaining part of <em>Network Science</em> Chapter 3, Section 3.5 - 3.10, with <em><strong>emphasis</strong></em> on 3.8 and 3.9.</p>
+</div></blockquote>
+<blockquote>
+<div><p><em>Exercises</em>: Did you really read the text? Answer the following questions (no calculations needed) in your IPython notebook.</p>
+<ul class="simple">
+<li><p>What’s the problem with random networks as a model for real-world networks according to the argument in section 3.5 (near the end)?</p></li>
+<li><p>List the four regimes that characterize random networks as a function of <span class="math notranslate nohighlight">\(\langle k \rangle\)</span>.</p></li>
+<li><p>According to the book, why is it a problem for random networks (in terms of being a model for real-world networks) that the degree-dependent clustering <span class="math notranslate nohighlight">\(C(k)\)</span> decreases as a function of <span class="math notranslate nohighlight">\(k\)</span> in real-world networks?</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+For all of the reading questions I recommend not using a LLM. The questions are designed to make sure you actually read and understand the textbook. If you don't do it yourself, it won't stick in your human brain!
+</div><p>The next set of exercises departs from the book by presenting a little study of the Watts-Strogatz (WS) model. We’re going to see just how few random links the WS model needs to dramatically shorten the path-lengths in the network. And while doing that, we’ll practice using <code class="docutils literal notranslate"><span class="pre">networkx</span></code>, writing loops, and plotting nice figures.</p>
+<blockquote>
+<div><p><em>Exercises</em>: WS edition.</p>
+<ul class="simple">
+<li><p>First, let’s use <code class="docutils literal notranslate"><span class="pre">networkx</span></code> to play around with WS graphs. Use <code class="docutils literal notranslate"><span class="pre">nx.watts_strogatz_graph</span></code> to generate 3 graphs with 500 nodes each, average degree = 4, and rewiring probablity <span class="math notranslate nohighlight">\(p = 0, 0.1,\)</span> and  <span class="math notranslate nohighlight">\(1\)</span>. Calculate the average shortest path length <span class="math notranslate nohighlight">\(\langle d \rangle\)</span> for each one.</p></li>
+<li><p>Describe what happens to the network when <span class="math notranslate nohighlight">\(p = 1\)</span>.</p></li>
+<li><p>Generate a lot of networks with different values of <span class="math notranslate nohighlight">\(p\)</span>. You will notice that paths are short when <span class="math notranslate nohighlight">\(p\)</span> is close to one and they are long when <span class="math notranslate nohighlight">\(p = 0\)</span>. What’s the value of <span class="math notranslate nohighlight">\(p\)</span> for which the average shortest path length gets close to the short paths we find in a fully randomized network.</p></li>
+<li><p>Let’s investigate this behavior in detail. Generate 50 networks with <span class="math notranslate nohighlight">\(N = 500\)</span>, <span class="math notranslate nohighlight">\(\langle k \rangle = 4\)</span>, for each of <span class="math notranslate nohighlight">\(p = \{0, 0.01, 0.03, 0.05, 0.1, 0.2\}\)</span>. Calculate the average of <span class="math notranslate nohighlight">\(\langle d \rangle\)</span> as well as the standard deviation over the 50 networks, to create a plot that shows how the path length decreases very quickly with only a little fraction of re-wiring. Use the standard deviation to add <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html">errorbars</a> to the plot. My version of the plot is below (since a picture’s worth 1000 words).</p></li>
+<li><p>Imagine that you put this plot in an assignment. Write a figure caption that explains to the reader what the plot shows (which variables, etc) and what’s interesting about it.</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+Again, I hope you will try solving the coding part of this on your own - especially the part that draws on NetworkX. The whole idea is to connect concepts from the literature to real-world code. And that learning happens when you try it on your own. I also recommend you do the loops on your own. It's OK to use LLMs to style the plot. 
+</div>
+<p><img alt="Sune's version" src="https://raw.githubusercontent.com/SocialComplexityLab/socialgraphs2021/main/files/ws.png" /></p>
+<section id="part-2-scale-free-networks">
+<h2>Part 2: Scale-free networks<a class="headerlink" href="#part-2-scale-free-networks" title="Link to this heading">#</a></h2>
+<p>The text book uses two whole chapters on the scale free property. We’ll try and power through during the remainder of this lecture. As always, let’s start by getting my take on the whole thing.</p>
+<blockquote>
+<div><p><strong><em>Video Lecture</em></strong>: The scale free property and the Barabasi-Albert Model.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;myLgzbXxhOQ&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="800"
+            height="450"
+            src="https://www.youtube.com/embed/myLgzbXxhOQ"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<p>And now it’s time for you guys to read. Recall that Barabasi (who wrote the textbook) discovered power-laws.</p>
+<blockquote>
+<div><p><em>Reading</em>: Now we dig into the extended history and and theory behind Scale-Free networks and the Barabasi-Albert Model.</p>
+<ul class="simple">
+<li><p>Chapter 4, Section 4.1 - 4.7.</p></li>
+<li><p>Chapter 5, section 5.1 - 5.5.</p></li>
+</ul>
+</div></blockquote>
+<blockquote>
+<div><p><em>Exercises</em>: BA edition.</p>
+<p>First a couple of questions to make sure that you’ve actually read the text.</p>
+<ul class="simple">
+<li><p>What are the three slope dependent regimes of complex networks with power-law degree distributions? Briefly describe each one. (You will have to skim chp 4.7 to answer this one).</p></li>
+<li><p>What are the three regimes we find in non-linear preferential attachement? (chapter 5) Briefly describe each one.</p></li>
+</ul>
+<p>We’re going to create our own Barabasi-Albert model (a special case) in right in a <code class="docutils literal notranslate"><span class="pre">notebook</span></code>. Follow the recipe below for success:</p>
+<ul class="simple">
+<li><p>First create a graph consisting of a single link. (You can call the nodes anything, but I would simply use integers as names).</p></li>
+<li><p>Now add another node, connecting one of the existing nodes in proportion to their degree.</p></li>
+<li><p>Keep going until you have a 100 node network.</p>
+<ul>
+<li><p><em>Hint</em>: The difficult part here is connecting to each node according to their degree. The way I do it is: generate a list of all edges (e.g. pairs of nodes), then flatten it (e.g. remove connection information). That list contains each node in proportion to its connections, thus drawing a random node from that list (e.g. using <code class="docutils literal notranslate"><span class="pre">random.choice</span></code>) corresponds to selecting a node with probability proportional to it’s degree.</p></li>
+</ul>
+</li>
+<li><p>Plot the network.</p></li>
+<li><p>Add more nodes until you have a 5000 node network.</p></li>
+<li><p>What’s the maximum and minimum degree?</p></li>
+<li><p>Now, bin the degree distribution using <code class="docutils literal notranslate"><span class="pre">numpy.histogram</span></code>.</p></li>
+<li><p>Plot the distribution. Plot it with both linear and log-log axes.</p></li>
+</ul>
+<p><img alt="Sune's version" src="https://raw.githubusercontent.com/SocialComplexityLab/socialgraphs2021/main/files/ba.png" /></p>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+As above, I recommend you try this on your own. It's so cool to experience that you can actually code up a BA network on your own ... and that it's not that difficult. See if you can figure out how to do the plotting and get the bins right (*remember last week's exercise*), and as always, it's OK to ask your LLM for help with the styling. 
+</div></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-3-the-friendship-paradox-in-scale-free-networks">
+<h1>Part 3: The friendship paradox in scale-free networks<a class="headerlink" href="#part-3-the-friendship-paradox-in-scale-free-networks" title="Link to this heading">#</a></h1>
+<p>Next step is to explore the <a class="reference external" href="https://en.wikipedia.org/wiki/Friendship_paradox">Friendship paradox</a>. This paradox states that <em>almost everyone</em> has fewer friends than their friends have, on average*. This sounds crazy, but is actually an almost trivial consequence of living in a social network with a power-law degree distribution. The explanation is that almost everyone is friends with a hub, that drives up the average degree of the friends. Let’s explore that in the 5000 node BA network we’ve just generated (let’s call this network <strong>F-BA</strong> for <em>friendship BA</em>). Do the following:</p>
+<p><em>Exercise</em>. The friendship paradox in BA networks</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Pick a node <span class="math notranslate nohighlight">\(i\)</span> at random (e.g. use <code class="docutils literal notranslate"><span class="pre">random.choice</span></code>). <a class="reference external" href="https://networkx.github.io/documentation/stable/reference/classes/generated/networkx.Graph.degree.html">Find its degree</a>.</p></li>
+<li><p>Find <span class="math notranslate nohighlight">\(i\)</span>’s <a class="reference external" href="https://networkx.org/documentation/stable/reference/classes/generated/networkx.Graph.neighbors.html">neighbors</a>. And calculate their average degree.</p></li>
+<li><p>Compare the two numbers to check if it’s true that <span class="math notranslate nohighlight">\(i\)</span>’s friends (on average) have more friends than <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>Do this 1000 times. How many out of those 1000 times is the friendship paradox true in <strong>F-BA</strong>?</p></li>
+</ul>
+</div></blockquote>
+<p><em>Exercise</em>. The friendship paradox more generally</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>What if the power law is flatter, e.g. <span class="math notranslate nohighlight">\(p(k) \sim k^{-\gamma}\)</span> with <span class="math notranslate nohighlight">\(\gamma = 2\)</span>? Will the fraction of times the paradox is true be higher or lower?</p></li>
+</ul>
+<ul class="simple">
+<li><p>First answer this question by simply reasoning. Think about what it would mean in terms of hubs that the power law is flatter?</p></li>
+<li><p>Now simulate a new network with the slope mentioned above. You can generate networks with power-law degree distributions using the <a class="reference external" href="https://en.wikipedia.org/wiki/Configuration_model">configuation model</a>. The <code class="docutils literal notranslate"><span class="pre">networkx</span></code> funtion is here <a class="reference external" href="https://networkx.org/documentation/stable/reference/generated/networkx.generators.degree_seq.configuration_model.html"><code class="docutils literal notranslate"><span class="pre">nx.configuration_model</span></code></a>. I suggest you make the network pretty big … let’s say 5000 nodes or more.</p>
+<ul>
+<li><p>Hint 0: In the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> function mentioned above, you need a degree sequence. This can be created using the so-called transformation method. If we can generate a random real number <span class="math notranslate nohighlight">\(r\)</span> uniformly distributed in the range <span class="math notranslate nohighlight">\(0 \leq r &lt; 1\)</span>, then <span class="math notranslate nohighlight">\(x = x_{\textrm{min}}(1 – r)^{-1/\alpha - 1}\)</span> is a random power-law-distributed real number in the range <span class="math notranslate nohighlight">\(x_{\textrm{min}} \leq x &lt; \infty\)</span> with exponent <span class="math notranslate nohighlight">\(\alpha\)</span>. Note that there has to be a lower limit <span class="math notranslate nohighlight">\(x_\textrm{min}\)</span> on the range; the power-law distribution diverges as <span class="math notranslate nohighlight">\(x\rightarrow 0\)</span>. See section 2 <a class="reference external" href="https://www.cs.cornell.edu/courses/cs6241/2019sp/readings/Newman-2005-distributions.pdf">this paper</a> for more details (especially the <span class="math notranslate nohighlight">\(\ddagger\)</span> footnote).</p></li>
+<li><p>Hint 1: The sequence generated using the method mentioned above consists of real numbers, we need integers, so it needs to be rounded as well.</p></li>
+<li><p>Hint 2: Also, due to some details of how the configuation works (see the <a class="reference external" href="https://en.wikipedia.org/wiki/Configuration_model">wiki page</a> for details), the sequence cannot have a sum which is an odd number, so if your sequence turns out odd, just choose an element and add 1 to its degree, that way the sum will be an even number.</p></li>
+</ul>
+</li>
+<li><p>Did you reason correctly above? For what fraction of the time is the friendship paradox true for your network with a new slope?</p></li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+If you want to maximize your learning, think through the questions and code up the exercise above on your own. Again, it's empowering to realize that you can actually do it. I encourage you, however, to ask your LLM to explain the configuration model to you (might be more fun that reading the Wiki page).
+</div>
+<p><em>Exercise</em>. The friendship paradox and the configuration model</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Now generate a network for the configuration model that has <em>the same slope and number of nodes as <strong>F-BA</strong> in A above</em>; let’s call this new network <strong>F-CM</strong> (for <em>friendship configuration model</em>).</p>
+<ul>
+<li><p>What fraction of the time is the friendship paradox is true for the <strong>F-CM</strong> network?</p></li>
+<li><p>Assuming that <strong>F-BA</strong> and <strong>F-CM</strong> have the same degree sequence can now <em>think</em> about if <strong>F-BA</strong> and <strong>F-CM</strong> are different with respect to the friendship paradox. Specifically, please explain your thoughts on the following topics</p>
+<ul>
+<li><p>Are there factors beyond the degree-distribution that could impact how frequently the friendship paradox is true? I might consider how network properties like assortativity, clustering, community-structure, etc potentially could impact things (it’s OK to search online and add references to your answer).</p></li>
+<li><p>How would you test more rigorously if the friendship-paradox is actually true equally often in <strong>F-BA</strong> and <strong>F-CM</strong>? (E.g. how would you run a statistical test to investigate … or how would you put error-bars on your plots?)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+This second part of the exercise is asking you to think about differences between two models for random networks. For this one, an appealing option could be to use an LLM to help quickly create the networks two and then analyze them using networkx. That way you can check your thinking.   
+</div>
+<div class="alert alert-block alert-info">
+Don't use an LLM for the two last questions "Are there factors ..." and "How would you test ..." Use your brain, do some research and write down your own answer before consulting an LLM.
+</div>
+<p><em>Exercise</em>: Growth without preferential attachment</p>
+<blockquote>
+<div><p>Finally, we’ll build a network of same size and degree as in the exercise above, <em>using the growth mechanism without the preferential attachment</em>. Follow the steps below for success</p>
+<ol class="arabic simple">
+<li><p>Grow a new network (the Sune-network) with the same parameters as the <strong>F-BA</strong> network in the exercise above, i.e. 5000 nodes, each new node connects to the existing network, but with one key difference: <em>have the incoming nodes connect to the existing nodes with</em> <strong>equal probability</strong>. This is the Sune-network.</p></li>
+<li><p>Generate an ER network of same number of nodes and links as the Sune-network.</p></li>
+</ol>
+<ul class="simple">
+<li><p>What are the differences between the ER network and the Sune-network? Explain in your own words.</p>
+<ul>
+<li><p><em>Hints</em>: To get started, plot the two degree distribution in the same plot. Compare and contrast. Another revealing network property to study is the the number of connected components.</p></li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<div class="alert alert-block alert-info">
+Feel free to go nuts in asking an LLM to help you for this last exercise.
+</div></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Week2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Week4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Week 3</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-small-world-networks">Part 1: Small world networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-scale-free-networks">Part 2: Scale-free networks</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-the-friendship-paradox-in-scale-free-networks">Part 3: The friendship paradox in scale-free networks</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sune Lehmann
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

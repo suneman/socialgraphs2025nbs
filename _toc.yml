@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: How_To_Take_This_Class
+chapters:
+- file: PythonBootcamp
+- file: Week1
+- file: Week2
+- file: Week3
+- file: Week4
+- file: Week5
+- file: Week6
+- file: Week7
+- file: Week8

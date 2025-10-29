@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Week7';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Week8" href="Week8.html" />
+    <link rel="next" title="Week 8" href="Week8.html" />
     <link rel="prev" title="Week 6" href="Week6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,7 +211,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Week8.html">Week8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Week8.html">Week 8</a></li>
 
 </ul>
 
@@ -580,12 +580,12 @@ It's OK to use an LLM to help with the code here.
 <blockquote>
 <div><p><em>Exercise</em>: Communities versus genres.</p>
 <ul class="simple">
-<li><p>Compare the communities found by your algorithm with the music genres by creating a matrix <span class="math notranslate nohighlight">\(D\)</span> with dimension (<span class="math notranslate nohighlight">\(G \times C\)</span>), where G is the 7 most common genres and C is the 7 most common communities. We set entry <span class="math notranslate nohighlight">\(D(i,j)\)</span> to be the number of nodes that genre <span class="math notranslate nohighlight">\(i\)</span> has in common with community <span class="math notranslate nohighlight">\(j\)</span>. The matrix <span class="math notranslate nohighlight">\(D\)</span> is what we call a confusion matrix.</p></li>
+<li><p>Compare the communities found by your algorithm with the music genres by creating a matrix <span class="math notranslate nohighlight">\(D\)</span> with dimension (<span class="math notranslate nohighlight">\(G \times C\)</span>), where <span class="math notranslate nohighlight">\(G\)</span> is the 7 most common genres and <span class="math notranslate nohighlight">\(C\)</span> is the 7 most common communities (if there are fewer than 7 communities, that’s fine, then just work with the communities you have). We set entry <span class="math notranslate nohighlight">\(D(i,j)\)</span> to be the number of nodes that genre <span class="math notranslate nohighlight">\(i\)</span> has in common with community <span class="math notranslate nohighlight">\(j\)</span>. The matrix <span class="math notranslate nohighlight">\(D\)</span> is what we call a confusion matrix.</p></li>
 <li><p>Use the confusion matrix to explain how well the communities you’ve detected correspond to the genres.</p>
 <ul>
 <li><p><strong>Note</strong>: This time, use all the genres associate with each node</p></li>
 <li><p><strong>Note</strong>: If a node is not characterized by any of the 7 most popular genres, just ignore it.</p></li>
-<li><p><strong>Note</strong>: If a node is not part of by any of the 7 largest communiteis, just ignore it.</p></li>
+<li><p><strong>Note</strong>: If a node is not part of by any of the 7 largest (or fewer, if you only have fewer) communities, just ignore it.</p></li>
 </ul>
 </li>
 </ul>
@@ -780,7 +780,7 @@ Overall, it's OK to use an LLM to help with the code. But do write your own answ
 </div><p><em>Exercise</em>: Community Word-clouds</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Redo the exercise above but for the 15 largest structural communities.</p></li>
+<li><p>Redo the exercise above but for the structural communities. You probably have fewer than 15, that’s fine. Just do the analysis for the ones you have.</p></li>
 <li><p>Do the word clouds seem more meaningful than for the genres? Optional: Add nuance to your answer by considering the confusion matrix <span class="math notranslate nohighlight">\(D\)</span> that you calculated above.</p></li>
 </ul>
 </div></blockquote>
@@ -833,7 +833,7 @@ Todays exercices are getting, long and involved so you can do whatever parts of 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week8</p>
+        <p class="prev-next-title">Week 8</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
